@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F7F7F7"
     tools:context="com.lewjun.blog.MainActivity">
 
     <!--使用Toolbar来实现标题栏-->
     <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_toolbar_gradient"
@@ -25,5 +27,69 @@
             android:layout_gravity="center"
             android:text="@string/app_name" />
     </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/framelayout_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:background="@drawable/bg_framelayout_search">
+
+        <EditText
+            android:id="@+id/edittext_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edittext_search"
+            android:hint="SEARCH BLOG"
+            android:maxLength="20"
+            android:maxLines="1" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|end"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/ic_close"
+            android:contentDescription="@string/contentdescription" />
+    </FrameLayout>
+
+    <ListView
+        android:id="@+id/listview_blog"
+        android:layout_below="@+id/framelayout_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_bottom_opr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bg_relativelayout_bottom_opr"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@color/transparent"
+            android:drawableTop="@drawable/ic_add"
+            android:padding="5dp"
+            android:text="NEW"
+            android:textColor="#787878" />
+
+        <Button
+            android:id="@+id/btn_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/btn_new"
+            android:background="@color/transparent"
+            android:drawableTop="@drawable/ic_menu"
+            android:padding="5dp"
+            android:text="MENU"
+            android:textColor="#787878" />
+    </RelativeLayout>
 
 </RelativeLayout>
