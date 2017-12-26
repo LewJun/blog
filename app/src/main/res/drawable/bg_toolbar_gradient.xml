@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!--
+    设置渐变色
+    startColor 起始颜色
+    endColor 终止颜色
+    radial 表示颜色从某点向周围辐射渐变，此时支持除angle之外的其他所有属性
+    必须通过设置gradientRadius属性以指定渐变的辐射半径，通过startColor指定起始颜色
+    -->
+    <gradient
+        android:gradientRadius="360"
+        android:startColor="#474451"
+        android:endColor="#321A1F"
+        android:type="radial"
+        />
+</shape>
