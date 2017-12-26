@@ -1,7 +1,7 @@
-<MKM version="2.0" imageFileUrl="file:///C:/Users/liaoxuwei/Desktop/blog/list.png">
+<MKM version="2.0" imageFileUrl="file:///D:/LewJun/AndroidStudioProjects/blog/doc/list.png">
   <Marks>
     <LengthMark direction="3" color="16711680" length="65" x="182" y="133"/>
-    <LengthMark direction="12" color="16711680" length="45" x="-0.25" y="453"/>
+    <LengthMark direction="12" color="16711680" length="45" x="0" y="453"/>
     <LengthMark direction="3" color="16711680" length="51" x="18" y="542"/>
     <LengthMark direction="12" color="16711680" length="360" x="0" y="409"/>
     <LengthMark direction="12" color="16711680" length="326" x="17" y="125"/>
@@ -13,11 +13,14 @@
     <LengthMark direction="3" color="16711680" length="36" x="264" y="85"/>
     <ColorMark defaultDirection="10" colorSystem="hex" direction="10" color="16711680" targetColor="15066597" offsetX="20" offsetY="10" x="34" y="133"/>
     <ColorMark defaultDirection="10" colorSystem="hex" direction="10" color="16711680" targetColor="13816530" offsetX="35" offsetY="8" x="121" y="85"/>
-    <LengthMark direction="12" color="16711680" length="20" x="225" y="563"/>
+    <LengthMark direction="12" color="16711680" length="18" x="225" y="563"/>
     <ColorMark defaultDirection="9" colorSystem="hex" direction="9" color="16711680" targetColor="3283487" offsetX="25" offsetY="10" x="2" y="51"/>
     <ColorMark defaultDirection="9" colorSystem="hex" direction="9" color="16711680" targetColor="4670545" offsetX="25" offsetY="10" x="171" y="66"/>
     <ColorMark defaultDirection="9" colorSystem="hex" direction="9" color="16711680" targetColor="12566463" offsetX="25" offsetY="10" x="36" y="105"/>
     <ColorMark defaultDirection="9" colorSystem="hex" direction="9" color="16711680" targetColor="9342606" offsetX="25" offsetY="10" x="74" y="227"/>
     <ColorMark defaultDirection="10" colorSystem="hex" direction="10" color="16711680" targetColor="15527148" offsetX="35" offsetY="23" x="23" y="229"/>
+    <LengthMark direction="3" color="16711680" length="14" x="300" y="72"/>
+    <LengthMark direction="12" color="16711680" length="20" x="341" y="93"/>
+    <LengthMark direction="3" color="16711680" length="12" x="251" y="542"/>
   </Marks>
 </MKM>
