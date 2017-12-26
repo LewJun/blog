@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">blog</string>
+    <string name="contentdescription">image view default contentDescription</string>
 </resources>
