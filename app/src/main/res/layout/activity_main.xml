@@ -20,20 +20,28 @@
         textAllCaps 设置大小写
         -->
         <TextView
-            android:textColor="@color/colorWhite"
-            android:textAllCaps="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/app_name" />
+            android:text="@string/app_name"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhite" />
     </android.support.v7.widget.Toolbar>
 
+    <!--
+        该页面只有一个输入框edittext_search，默认当该页面一开始加载的时候，edittext_search
+        就获取了焦点，这并不是希望的，所以可以设置edittext_search的外框架来获取焦点。
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+    -->
     <FrameLayout
         android:id="@+id/framelayout_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
-        android:background="@drawable/bg_framelayout_search">
+        android:background="@drawable/bg_framelayout_search"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <EditText
             android:id="@+id/edittext_search"
@@ -54,11 +62,22 @@
             android:contentDescription="@string/contentdescription" />
     </FrameLayout>
 
+    <!--
+    android:divider="@null" 去掉自带的线条
+    android:cacheColorHint="@color/transparent" 去下拉时的黑影
+    android:overScrollMode="never" 去在顶端和底端滑动时出现的渐变色
+    android:layout_below="@+id/framelayout_search" 在framelayout_search其上
+    android:layout_above="@+id/relativelayout_bottom_opr" 在relativelayout_bottom_opr其下
+    -->
     <ListView
         android:id="@+id/listview_blog"
-        android:layout_below="@+id/framelayout_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/relativelayout_bottom_opr"
+        android:layout_below="@+id/framelayout_search"
+        android:overScrollMode="never"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@null" />
 
     <RelativeLayout
         android:id="@+id/relativelayout_bottom_opr"
@@ -77,6 +96,7 @@
             android:drawableTop="@drawable/ic_add"
             android:padding="5dp"
             android:text="NEW"
+            android:textSize="8sp"
             android:textColor="#787878" />
 
         <Button
@@ -89,6 +109,7 @@
             android:drawableTop="@drawable/ic_menu"
             android:padding="5dp"
             android:text="MENU"
+            android:textSize="8sp"
             android:textColor="#787878" />
     </RelativeLayout>
 

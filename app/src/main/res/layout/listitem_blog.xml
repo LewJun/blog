@@ -1,49 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="60dp"
     android:gravity="center_vertical">
 
     <TextView
         android:id="@+id/tv_pubtime"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
+        android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:paddingBottom="15dp"
         android:paddingTop="15dp"
-        android:text="01/02" />
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:textSize="8sp" />
 
-    <ImageView
-        android:id="@+id/imgview_divider"
+    <RelativeLayout
+        android:id="@+id/relativelayout_divider"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@id/tv_pubtime"
-        android:background="@drawable/ic_bubble_chart" />
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/tv_pubtime">
+
+        <View
+            android:id="@+id/view_topline"
+            android:layout_width="1dp"
+            android:layout_height="24dp"
+            android:layout_centerHorizontal="true"
+            android:background="#DFDFDF" />
+
+        <View
+            android:id="@+id/view_dot"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_below="@id/view_topline"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ic_panorama_fish_eye" />
+
+        <View
+            android:id="@+id/view_downline"
+            android:layout_width="1dp"
+            android:layout_height="24dp"
+            android:layout_below="@+id/view_dot"
+            android:layout_centerHorizontal="true"
+            android:background="#DFDFDF" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/imgview_divider"
+        android:layout_toRightOf="@+id/relativelayout_divider"
         android:ellipsize="middle"
         android:maxLength="20"
         android:paddingBottom="15dp"
         android:paddingLeft="5dp"
         android:paddingTop="15dp"
-        android:text="sdfsdfsdfsdfsfsdfwerwerwe"
+        android:layout_centerVertical="true"
         android:textSize="18sp" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_alignLeft="@id/tv_title"
         android:layout_below="@id/tv_title"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/bg_view_line" />
 </RelativeLayout>
