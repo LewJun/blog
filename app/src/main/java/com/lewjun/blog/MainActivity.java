@@ -1,13 +1,19 @@
 package com.lewjun.blog;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -28,6 +34,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initViews() {
         edittext_search = findViewById(R.id.edittext_search);
+        edittext_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         btn_new = findViewById(R.id.btn_new);
         btn_new.setOnClickListener(this);
 
@@ -38,6 +61,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imgbtn_clear.setOnClickListener(this);
 
         listview_blog = findViewById(R.id.listview_blog);
+
+        initBlogList();
+        BlogAdapter adapter = new BlogAdapter(this, R.layout.listitem_blog, bloglist);
+        listview_blog.setAdapter(adapter);
+        // 列表项单击事件
+        listview_blog.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
+                BlogEntity blogEntity = bloglist.get(pos);
+            }
+        });
+        // 列表项长按事件
+        listview_blog.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long id) {
+                return false;
+            }
+        });
+    }
+
+    private List<BlogEntity> bloglist = new ArrayList<>();
+
+    /**
+     * 初始化bloglist
+     */
+    private void initBlogList() {
+        for (int i = 0; i < 20; i++) {
+            BlogEntity blogEntity = new BlogEntity();
+            blogEntity.setId(i + 1);
+            blogEntity.setTitle("title " + i);
+            blogEntity.setDescription("description " + i);
+            blogEntity.setContent("content " + i);
+            blogEntity.setPubTime(System.currentTimeMillis());
+            blogEntity.setReadTimes((i + 1) * 2);
+            bloglist.add(blogEntity);
+        }
     }
 
     @Override
