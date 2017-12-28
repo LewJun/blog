@@ -10,7 +10,7 @@
     必须通过设置gradientRadius属性以指定渐变的辐射半径，通过startColor指定起始颜色
     -->
     <gradient
-        android:gradientRadius="360"
+        android:gradientRadius="720"
         android:startColor="#474451"
         android:endColor="#321A1F"
         android:type="radial"
