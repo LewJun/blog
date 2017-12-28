@@ -43,6 +43,11 @@
         android:focusable="true"
         android:focusableInTouchMode="true">
 
+        <!--
+        android:maxLines="1"
+        android:singleLine="true"
+        这两项配置必须同时设置才能做到一行显示
+        -->
         <EditText
             android:id="@+id/edittext_search"
             android:layout_width="match_parent"
@@ -50,7 +55,9 @@
             android:background="@drawable/bg_edittext_search"
             android:hint="SEARCH BLOG"
             android:maxLength="20"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:singleLine="true"
+            />
 
         <ImageButton
             android:id="@+id/imgbtn_clear"
