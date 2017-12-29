@@ -18,7 +18,6 @@ import android.widget.Toast;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -102,19 +101,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      */
     @SuppressLint("StaticFieldLeak")
     private void initBlogList() {
-        List<BlogEntity> bloglist = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            BlogEntity blogEntity = new BlogEntity();
-            blogEntity.setId(i + 1);
-            blogEntity.setTitle("title " + i);
-            blogEntity.setDescription("description " + i);
-            blogEntity.setContent("content " + i);
-            blogEntity.setPubTime(System.currentTimeMillis());
-            blogEntity.setReadTimes((i + 1) * 2);
-
-            bloglist.add(blogEntity);
-        }
-
         new AsyncTask<Void, Void, ResponseInfo<List<BlogEntity>>>() {
             @Override
             protected ResponseInfo<List<BlogEntity>> doInBackground(Void... voids) {
