@@ -43,6 +43,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         initViews();
 
+        initBlogList();
     }
 
     private void initViews() {
@@ -134,13 +135,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 super.onPostExecute(listResponseInfo);
                 if(listResponseInfo.isSuccess()) {
                     List<BlogEntity> blogEntityList = listResponseInfo.getData();
-                    for (BlogEntity blogEntity : blogEntityList) {
-                        Log.d(TAG, "onPostExecute: " + blogEntity);
-                    }
+//                    for (BlogEntity blogEntity : blogEntityList) {
+//                        Log.d(TAG, "onPostExecute: " + blogEntity);
+//                    }
+                    adapter.setItemList(blogEntityList);
                 }
             }
         }.execute();
-        adapter.setItemList(bloglist);
+//        adapter.setItemList(bloglist);
     }
 
     @Override
