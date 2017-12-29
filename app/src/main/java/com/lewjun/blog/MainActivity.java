@@ -1,9 +1,12 @@
 package com.lewjun.blog;
 
+import android.annotation.SuppressLint;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -12,11 +15,17 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
+    private static final String TAG = "MainActivity";
     private ImageButton imgbtn_clear;
     private EditText edittext_search;
     private Button btn_new;
@@ -24,12 +33,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private ListView listview_blog;
 
+    private BlogAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate: ");
         setContentView(R.layout.activity_main);
 
         initViews();
+
     }
 
     private void initViews() {
@@ -62,14 +75,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         listview_blog = findViewById(R.id.listview_blog);
 
-        initBlogList();
-        BlogAdapter adapter = new BlogAdapter(this, R.layout.listitem_blog, bloglist);
+        adapter = new BlogAdapter(this);
         listview_blog.setAdapter(adapter);
         // 列表项单击事件
         listview_blog.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
-                BlogEntity blogEntity = bloglist.get(pos);
+                BlogEntity blogEntity = adapter.getItem(pos);
+                new AlertDialog.Builder(MainActivity.this).setTitle(blogEntity.getTitle())
+                        .setMessage(blogEntity.getContent())
+                        .create().show();
             }
         });
         // 列表项长按事件
@@ -81,12 +96,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    private List<BlogEntity> bloglist = new ArrayList<>();
-
     /**
      * 初始化bloglist
      */
+    @SuppressLint("StaticFieldLeak")
     private void initBlogList() {
+        List<BlogEntity> bloglist = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             BlogEntity blogEntity = new BlogEntity();
             blogEntity.setId(i + 1);
@@ -95,8 +110,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             blogEntity.setContent("content " + i);
             blogEntity.setPubTime(System.currentTimeMillis());
             blogEntity.setReadTimes((i + 1) * 2);
+
             bloglist.add(blogEntity);
         }
+
+        new AsyncTask<Void, Void, ResponseInfo<List<BlogEntity>>>() {
+            @Override
+            protected ResponseInfo<List<BlogEntity>> doInBackground(Void... voids) {
+                Type type = new TypeToken<ResponseInfo<List<BlogEntity>>>() {
+                }.getType();
+                Map<String, String> paramsMap = new HashMap<>();
+                paramsMap.put("reqmethod", "list");
+                try {
+                    return HttpUtil.post(paramsMap, type);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(ResponseInfo<List<BlogEntity>> listResponseInfo) {
+                super.onPostExecute(listResponseInfo);
+                if(listResponseInfo.isSuccess()) {
+                    List<BlogEntity> blogEntityList = listResponseInfo.getData();
+                    for (BlogEntity blogEntity : blogEntityList) {
+                        Log.d(TAG, "onPostExecute: " + blogEntity);
+                    }
+                }
+            }
+        }.execute();
+        adapter.setItemList(bloglist);
     }
 
     @Override
